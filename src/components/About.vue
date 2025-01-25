@@ -89,7 +89,7 @@ export default {
     align-items: center;
     flex-direction: column;
     margin-right: 0;
-    margin-left: 2em;    
+    margin-left: 1.9em;    
 }
 
 
