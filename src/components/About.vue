@@ -88,7 +88,8 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-right: 0;    
+    margin-right: 0;
+    margin-left: 2em;    
 }
 
 
