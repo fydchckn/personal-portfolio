@@ -366,5 +366,5 @@ export default {
     90% {transform: translateX(2px);}
     100% {transform: translateX(-2px);}
 }
-
+    
 </style>
