@@ -347,7 +347,7 @@ export default {
 
 }
 
-/* transition */
+/* transitions */
 
 .fade-enter-active{
    animation: wobble 0.5s ease;
