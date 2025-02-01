@@ -70,12 +70,16 @@
                         <div class="myforms | flow" style="--flow-spacer: 0.5em ">   
                             <label for="Name">Name</label>
                             <input type="text" class="name" required placeholder="Type your name" v-model="name">
-                            <div class="error" v-if="nameerror">{{ nameerror }}</div>
+                            <transition name="fade">
+                                <div class="error" v-if="nameerror">{{ nameerror }}</div>
+                            </transition>
                             <div class="numberandemail">
                                 <div class="pnumber">
                                     <label for="" class="Number2">Phone Number</label>
                                     <input type="text" required placeholder="Type your phone number" v-model="number">
-                                    <div class="error" v-if="numbererror" >{{ numbererror }}</div>
+                                    <transition name="fade">
+                                        <div class="error" v-if="numbererror" >{{ numbererror }}</div>
+                                    </transition>
                                 </div>
                                 <div>
                                     <label for="">Email</label>
@@ -112,8 +116,8 @@ export default {
     },
     methods: {
         handleData() {
-            this.nameerror = this.name === isNaN() ? "" : "invalid name"
-            this.numbererror = this.number === !isNaN() || this.number.length <= 11  ? "" : "invalid number"
+            this.nameerror = /^[a-zA-Z\s]+$/.test(this.name)  ? "" : "invalid name"
+            this.numbererror =  !isNaN(this.number) && String(this.number).length === 11  ? "" : "invalid number"
         }
     }
 }
@@ -343,5 +347,24 @@ export default {
 
 }
 
+/* transition */
+
+.fade-enter-active{
+   animation: wobble 0.5s ease;
+}
+
+@keyframes wobble{
+    0% {transform: translateX(-2px);}
+    10% {transform: translateX(2px);}
+    20% {transform: translateX(-2px);}
+    30% {transform: translateX(2px);}
+    40% {transform: translateX(-2px);}
+    50% {transform: translateX(2px);}
+    60% {transform: translateX(-2px);}
+    70% {transform: translateX(2px);}
+    80% {transform: translateX(-2px);}
+    90% {transform: translateX(2px);}
+    100% {transform: translateX(-2px);}
+}
 
 </style>
