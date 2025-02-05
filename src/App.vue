@@ -1,7 +1,9 @@
   <template>
 
   <Navigation :togglemnav="togglemnav"  @toggle-mobile="mobilenav"/>
-  <Mobilenav  :togglemnav="togglemnav"  v-if="togglemnav"/>
+  <transition name="mymobilenav">
+    <Mobilenav  :togglemnav="togglemnav"  v-if="togglemnav"/>
+  </transition>
   <Introduction/>
   <About/>
   <Services/>
@@ -265,6 +267,29 @@ picture {
   background-color: var(--clr-4) !important;
 }
 
+/* transitions mobile navigation */
+
+    .mymobilenav-enter-from{
+      opacity: 0;
+      transform: translateY(-60px);
+    }
+    .mymobilenav-enter-to{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mymobilenav-leave-from{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .mymobilenav-leave-to{
+      opacity: 0;
+      transform: translateY(-60px);
+    }
+
+    .mymobilenav-enter-active, .mymobilenav-leave-active{
+      transition: all 0.1s ease;
+    }
 
 
 </style>

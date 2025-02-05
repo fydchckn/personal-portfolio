@@ -1,6 +1,7 @@
 <template>
   <div class="backdrop" v-if="togglemnav">
-    <div class="container">
+   
+      <div class="container" v-if="togglemnav">
             <ul class="mobilenav">
                 <li>Home</li>
                 <li>About me</li>
@@ -9,7 +10,7 @@
                 <li>Portfolio</li>
                 <li>Blog</li>
                 <li>Contact us</li>
-            </ul>
+            </ul>  
     </div>
   </div>
 </template>
@@ -39,8 +40,6 @@ export default {
      .mobilenav{
       display: none;
      }
-
-
 
    @media (max-width: 52.875em) {
   .container {
@@ -81,6 +80,9 @@ export default {
     height: 100%;
     z-index: 9999;
     }
+
+
+
 }
 
 
