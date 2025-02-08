@@ -1,18 +1,19 @@
 <template>
     <section class="paddingblock">
-        <div class="container" >
+        <div class="container">
             <div class="even-columns | intro ">
-                <div class="text | flow" style="--flow-spacer: 1em">
-                    <p class="kent">I'm Kent</p>
-                    <p class="dev">A Website Developer</p>
-                    <p class="dev">Freelance Web & Mobile UI/UX Designer</p>
-                    <div class="mybtn">
+                <transition-group class="text | flow" style="--flow-spacer: 1em;" name="scale" appear tag="div">
+                    <p class="kent" key="1">I'm Kent</p>
+                    <p class="dev" key="2">A Website Developer</p>
+                    <p class="dev" key="3">Freelance Web & Mobile UI/UX Designer</p>
+                    <div class="mybtn" key="4">
                         <button class="button">Hire Me</button>
                     </div>
-                </div>
+                </transition-group>
+
                 <div>
                     <img src="../assets/dawg.png" alt="myphoto" class="mydawg">
-                </div>     
+                </div>
             </div>
         </div>
     </section>
@@ -20,6 +21,7 @@
 
 <script>
 export default {
+// eslint-disable-next-line vue/multi-word-component-names
     name: 'Introduction',
 }
 </script>
@@ -70,6 +72,23 @@ export default {
 .text{
     margin-top: 3em;
 }
+
+/* transition */
+
+.scale-enter-from{
+    transform: scale(0.6);
+}
+.scale-leave-to{
+    transform: scale(0);
+}
+
+.scale-enter-active, .scale-leave-active{
+    transition: all 0.5s ease;
+}
+
+
+
+
 
 
 </style>
