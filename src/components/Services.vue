@@ -1,42 +1,56 @@
 <template>
-  <section class="paddingblock">
-    <div class="container">
-        <div class="even-columns| services | flow">
-        <div class="lineservice">
-            <p class="service">Services</p>
-            <hr class="line">
+    <section class="paddingblock">
+        <div class="container">
+            <div class="even-columns| services | flow">
+                <div class="lineservice" v-motion-fade-visible>
+                    <p class="service">Services</p>
+                    <hr class="line">
+                </div>
+                <p class="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natur</p>
+
+                <transition-group class="box-container" tag="div"  
+                v-motion
+                :initial="{ opacity: 0, y: 100 }"
+                :visible="{ opacity: 1, y: 0,}" 
+                :delay="300"
+                :duration="1200"
+                >
+                    <div class="box | flow" style="--flow-spacer: 1em" id="box1" key="1">
+                        <img src="../assets/phone_icon-1.png" alt="phone">
+                        <p class="title">UX Research</p>
+                        <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat</p>
+                    </div>
+                    <div class="box | flow" style="--flow-spacer: 1em" id="box2" key="2">
+                        <img src="../assets/phone_icon-1.png" alt="phone">
+                        <p class="title">Web Development</p>
+                        <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat</p>
+                    </div>
+                    <div class="box | flow" style="--flow-spacer: 1em" id="box3" key="3">
+                        <img src="../assets/phone_icon-1.png" alt="phone">
+                        <p class="title">App Design</p>
+                        <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat</p>
+                    </div>
+                    <div class="box | flow" style="--flow-spacer: 1em" id="box4" key="4">
+                        <img src="../assets/phone_icon-1.png" alt="phone">
+                        <p class="title">Web Design</p>
+                        <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velitesse cillum dolore eu
+                            fugiat</p>
+                    </div>
+                </transition-group>
+            </div>
         </div>
-        <p class="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natur</p>
-        <div class="box-container">
-            <div class="box | flow" style="--flow-spacer: 1em" id="box1">
-            <img src="../assets/phone_icon-1.png" alt="phone">
-            <p class="title">UX Research</p>
-            <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</p>
-        </div>
-        <div class="box | flow" style="--flow-spacer: 1em" id="box2">
-            <img src="../assets/phone_icon-1.png" alt="phone">
-            <p class="title">Web Development</p>
-            <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</p>
-        </div>
-        <div class="box | flow" style="--flow-spacer: 1em" id="box3">
-            <img src="../assets/phone_icon-1.png" alt="phone">
-            <p class="title">App Design</p>
-            <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</p>
-        </div>
-        <div class="box | flow" style="--flow-spacer: 1em" id="box4">
-            <img src="../assets/phone_icon-1.png" alt="phone">
-            <p class="title">Web Design</p>
-            <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velitesse cillum dolore eu fugiat</p>
-        </div>
-        </div>
-        </div>
-    </div>
-  </section>
+    </section>
 </template>
 
 <script>
+
 export default {
-    name: 'Services'
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'Services',
 }
 </script>
 

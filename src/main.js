@@ -1,9 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { vuemotion } from '@vueuse/motion'
+import { MotionPlugin } from '@vueuse/motion'
 
+const app = createApp(App)
 
-createApp(App).mount('#app')
-createApp(App).use(vuemotion)
-
-
+app.use(MotionPlugin) 
+app.mount('#app') 

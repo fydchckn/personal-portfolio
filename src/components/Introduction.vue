@@ -2,9 +2,7 @@
     <section class="paddingblock">
         <div class="container">
             <div class="even-columns | intro ">
-                <transition-group class="text | flow" style="--flow-spacer: 1em;"  appear tag="div"
-                @before-enter="beforeEnter"
-                @enter="Enter">
+                <transition-group class="text | flow" style="--flow-spacer: 1em;"   tag="div">
                     <p class="kent" key="1">I'm Kent</p>
                     <p class="dev" key="2">A Website Developer</p>
                     <p class="dev" key="3">Freelance Web & Mobile UI/UX Designer</p>
@@ -21,30 +19,10 @@
 </template>
 
 <script>
-import gsap from 'gsap'
 
 export default {
 // eslint-disable-next-line vue/multi-word-component-names
     name: 'Introduction',
-    setup(){
-        const beforeEnter = (element) => {
-            element.style.opacity = 0
-            element.style.transform = 'scale(0.6)'
-        }
-        const Enter = (element) => {
-            gsap.to(element, {
-                opacity: 1,
-                scale: 1,
-                ease: 'power1'
-            })
-        }   
-
-
-        return{
-            beforeEnter,
-            Enter
-        }
-    }
 }
 </script>
 
@@ -93,6 +71,12 @@ export default {
 
 .text{
     margin-top: 3em;
+}
+
+.box{
+    height: 200px;
+    width: 200px;
+    background-color: blue;
 }
 
 /* transition */
