@@ -9,8 +9,10 @@
     "deploy": "gh-pages -d dist -b main"
   },
   "dependencies": {
+    "@vueuse/motion": "^2.2.6",
     "a11y-slider": "^0.4.22",
     "core-js": "^3.8.3",
+    "gsap": "^3.12.7",
     "vue": "^3.2.13"
   },
   "devDependencies": {
