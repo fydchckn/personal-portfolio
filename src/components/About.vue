@@ -7,9 +7,9 @@
                     <hr class="line">
                 </div>
                 <div class="flow" style="--flow-spacer: 2em">
-                    <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p class="text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nu pariatur excepteur sint occaecat.</p>
-                    <div class="mybtns">
+                    <p class="text | pbout">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="text | pbout">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nu pariatur excepteur sint occaecat.</p>
+                    <div class="mybtns | scalebtns">
                         <button class="button | workbtn" type="btns">View Works</button>
                         <button class="button | btndiff" type="btns">Download CV</button>
                     </div>
@@ -20,8 +20,62 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+import { onMounted } from 'vue';
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
+
 export default {
-    name: 'About'
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'About',
+    setup(){
+        onMounted(() =>{
+             gsap.set('.abouttext', {x: -800,});
+             gsap.set('.pbout', {opacity: 0});
+             gsap.set('.scalebtns', {scale: 0.5, opacity: 0});
+
+
+             gsap.to('.abouttext', {
+                x: 0,
+                duration: 1,
+                scrollTrigger:{
+                    // markers: true,
+                    start: 'top 80%',
+                    end: 'top 45%',
+                    trigger: '.abouttext',
+                    scrub: true,
+                    
+                },
+             });
+
+             gsap.to('.pbout', {
+                opacity: 1,
+                duration: 1.1,
+                ease: 'power4.in',
+                scrollTrigger: {
+                    start: 'top 80%',
+                    end: 'top 45%',
+                    trigger: '.abouttext',
+                    scrub: true,
+                    
+                }
+             });
+
+             gsap.to('.scalebtns', {
+                scale: 1,
+                opacity: 1,
+                duration: 0.3,
+                scrollTrigger: {
+                    start: 'top 80%',
+                    end: 'top 45%',
+                    trigger: '.abouttext',
+                    scrub: true,
+                    
+                }
+             })
+        })
+    },
+    
 }
 </script>
 

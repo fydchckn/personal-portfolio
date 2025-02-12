@@ -91,7 +91,7 @@
                                 <textarea class="msg" placeholder="Type your message" v-model="message"></textarea>
                             </div>
                         </div>
-                        <div class="btn">
+                        <div class="btn | trnsbtn">
                             <button class="button">Send Message</button>
                         </div>
                     </form>
@@ -102,6 +102,11 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
+import { onMounted } from 'vue';
+
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Contact',
@@ -120,6 +125,42 @@ export default {
             this.nameerror = /^[a-zA-Z\s]+$/.test(this.name)  ? "" : "invalid name"
             this.numbererror =  !isNaN(this.number) && String(this.number).length === 11  ? "" : "invalid number"
         }
+    },
+    setup(){
+        onMounted(() =>{
+            gsap.set('.linecontact', {opacity: 0, scale: 0.5})
+            gsap.set('.contactcolumn', {opacity: 0, x: 700})
+
+            gsap.to('.linecontact',{
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: '.contactinfo',
+                    start: 'top 80%',
+                    end: 'center 70%',
+                    // markers: true,
+                    scrub: true
+                }
+            });
+
+            gsap.to('.contactcolumn',{
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                stagger: 0.6,
+                scrollTrigger: {
+                    trigger: '.contactinfo',
+                    start: 'top 80%',
+                    end: 'center 70%',
+                    //markers: true,
+                    scrub: true
+                }
+            });
+
+
+
+        })
     }
 }
 </script>

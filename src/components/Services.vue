@@ -2,55 +2,86 @@
     <section class="paddingblock">
         <div class="container">
             <div class="even-columns| services | flow">
-                <div class="lineservice" v-motion-fade-visible>
+                <div class="lineservice">
                     <p class="service">Services</p>
                     <hr class="line">
+                    
                 </div>
-                <p class="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                <p class="text | textmarker">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                     mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natur</p>
 
-                <transition-group class="box-container" tag="div"  
-                v-motion
-                :initial="{ opacity: 0, y: 100 }"
-                :visible="{ opacity: 1, y: 0,}" 
-                :delay="300"
-                :duration="1200"
-                >
-                    <div class="box | flow" style="--flow-spacer: 1em" id="box1" key="1">
+                <div class="box-container">
+                    <div class="box | flow | box1" style="--flow-spacer: 1em" id="box1" key="1">
                         <img src="../assets/phone_icon-1.png" alt="phone">
                         <p class="title">UX Research</p>
                         <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                             fugiat</p>
                     </div>
-                    <div class="box | flow" style="--flow-spacer: 1em" id="box2" key="2">
+                    <div class="box | flow | box2" style="--flow-spacer: 1em" id="box2" key="2">
                         <img src="../assets/phone_icon-1.png" alt="phone">
                         <p class="title">Web Development</p>
                         <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                             fugiat</p>
                     </div>
-                    <div class="box | flow" style="--flow-spacer: 1em" id="box3" key="3">
+                    <div class="box | flow | box3" style="--flow-spacer: 1em" id="box3" key="3">
                         <img src="../assets/phone_icon-1.png" alt="phone">
                         <p class="title">App Design</p>
                         <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                             fugiat</p>
                     </div>
-                    <div class="box | flow" style="--flow-spacer: 1em" id="box4" key="4">
+                    <div class="box | flow | box4" style="--flow-spacer: 1em" id="box4" key="4">
                         <img src="../assets/phone_icon-1.png" alt="phone">
                         <p class="title">Web Design</p>
                         <p class="text2">Duis aute irure dolor in reprehenderit in voluptate velitesse cillum dolore eu
                             fugiat</p>
                     </div>
-                </transition-group>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
+import { onMounted } from 'vue';
 
 export default {
+    
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Services',
+    setup(){
+        onMounted(() => {
+            gsap.set('.box', {y: 700, opacity: 0})
+            gsap.set(['.lineservice', '.textmarker'], {scale: 0.7, opacity: 0})
+
+            gsap.to('.box', {
+                y: 0,
+                opacity: 1,
+                duration: 1,    
+                stagger: 0.5,
+                scrollTrigger: {
+                    trigger: '.service',
+                    start: 'top center',
+                    end: 'top 30%',
+                    scrub: true
+                }
+            });
+
+            gsap.to(['.lineservice', '.textmarker'], {
+                scale: 1, 
+                opacity: 1,
+                scrollTrigger: {
+                    trigger: '.textmarker',
+                    start: 'top center',
+                    end: 'top 45%',
+                    scrub: true,
+                }
+
+            })
+        })
+    }
 }
 </script>
 

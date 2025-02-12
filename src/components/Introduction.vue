@@ -2,27 +2,48 @@
     <section class="paddingblock">
         <div class="container">
             <div class="even-columns | intro ">
-                <transition-group class="text | flow" style="--flow-spacer: 1em;"   tag="div">
+                <div class="text | flow | introtext" style="--flow-spacer: 1em;" tag="div">
                     <p class="kent" key="1">I'm Kent</p>
                     <p class="dev" key="2">A Website Developer</p>
                     <p class="dev" key="3">Freelance Web & Mobile UI/UX Designer</p>
                     <div class="mybtn" key="4">
                         <button class="button">Hire Me</button>
                     </div>
-                </transition-group>
-                <div>
-                    <img src="../assets/dawg.png" alt="myphoto" class="mydawg">
                 </div>
+                    <div class="dawgs">
+                        <img src="../assets/dawg.png" alt="myphoto" class="mydawg">
+                    </div>
             </div>
         </div>
     </section>
 </template>
-
 <script>
+import gsap from 'gsap'
+import { onMounted } from 'vue';
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
 // eslint-disable-next-line vue/multi-word-component-names
     name: 'Introduction',
+    setup(){
+        onMounted(() => {
+            gsap.set('.introtext', { x: -700, });
+            gsap.set('.dawgs', { x: 800, });
+
+            gsap.to('.introtext', {
+                x: 0,
+                scrollTrigger: '.introtext',
+                duration: 1,
+            });
+            gsap.to('.dawgs', {
+                x: 0,
+                scrollTrigger: '.dawgs',
+                duration: 1,
+            });
+                 
+        })
+    }
 }
 </script>
 

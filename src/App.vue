@@ -2,7 +2,7 @@
 
   <Navigation :togglemnav="togglemnav"  @toggle-mobile="mobilenav"/>
   <transition name="mymobilenav">
-    <Mobilenav  :togglemnav="togglemnav"  v-if="togglemnav"/>
+  <Mobilenav  :togglemnav="togglemnav"  v-if="togglemnav"/>
   </transition>
   <Introduction/>
   <About/>
@@ -10,6 +10,7 @@
   <Work/>
   <Contact/>
   <theFooter/>
+  <!-- <Test/> -->
   
 </template>
 
@@ -22,6 +23,7 @@ import Work from './components/Work.vue';
 import Contact from './components/Contact.vue';
 import theFooter from './components/Footer.vue';
 import Mobilenav from './components/Mobilenav.vue';
+// import Test from './components/Test.vue';
 
 
 
@@ -35,7 +37,8 @@ export default {
     Work,
     Contact,
     theFooter,
-    Mobilenav
+    Mobilenav,
+    // Test
   },
   data(){
     return{

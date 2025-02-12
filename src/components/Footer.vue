@@ -1,31 +1,31 @@
 <template>
-    <hr class="line">
-    <footer class="paddingblock">
+    <hr class="line" >
+    <footer style="padding-block: 9em;">
         <div class="container">
             <div class="even-columns | footer | flow " style="--flow-spacer: 2em">
                 <div>
-                    <svg class="icon">
+                    <svg class="icon | kentpogi">
                         <use xlink:href="../assets/all-icons.svg#mysite"></use>
                     </svg>
-                    <p class="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p class="text | textfooter">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     
                     <ul class="myicons">
-                        <li class="insta">
+                        <li class="insta | listicons">
                             <svg class="icons">
                                 <use xlink:href="../assets/all-icons.svg#instagram2"></use>
                             </svg>
                         </li>
-                        <li>
+                        <li class="listicons">
                             <svg class="icons">
                                 <use xlink:href="../assets/all-icons.svg#github"></use>
                             </svg>
                         </li>
-                        <li>
+                        <li  class="listicons">
                             <svg class="icons">
                                 <use xlink:href="../assets/all-icons.svg#facebook2"></use>
                             </svg>
                         </li>
-                        <li>
+                        <li  class="listicons">
                             <svg class="icons">
                                 <use xlink:href="../assets/all-icons.svg#email"></use>
                             </svg>
@@ -38,8 +38,64 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
+import { onMounted } from 'vue';
+
+
 export default {
-    name: 'Footer'
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'Footer',
+    setup(){
+        onMounted(() => {
+            gsap.set('.kentpogi', {y: -60 , opacity: 0})
+            gsap.set('.textfooter', {x: 100 , opacity: 0})
+            gsap.set('.listicons', {x: 100 , opacity: 0})
+
+            gsap.to('.kentpogi', {
+                y: 0,
+                opacity: 1,
+                duration: 0.4,
+                ease: 'bounce.out',
+                scrollTrigger: {
+                    trigger: '.trnsbtn',
+                    start: 'top center',
+                    end: 'bottom 30%',
+                    // markers: true,
+                    toggleActions: 'restart none none none',
+                }
+            });
+
+            gsap.to('.textfooter', {
+                x: 1,
+                opacity: 1,
+                duration: 0.4,
+                scrollTrigger: {
+                    trigger: '.trnsbtn',
+                    start: 'top center',
+                    end: 'bottom 30%',
+                    // markers: true,
+                    scrub: true
+                }
+            });
+
+            gsap.to('.listicons', {
+                x: 1,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.5,
+                scrollTrigger: {
+                    trigger: '.trnsbtn',
+                    start: 'top center',
+                    end: 'bottom 30%',
+                    // markers: true,
+                    scrub: true
+                }
+            });
+
+        })
+    }
 }
 </script>
 

@@ -34,6 +34,10 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+import { onMounted } from 'vue';
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
@@ -43,6 +47,16 @@ export default {
         btntoggle(){
             this.$emit('toggle-mobile')
         },
+    },
+    setup(){
+        onMounted(() =>{
+            gsap.set('.mynav', {y: -100});
+            gsap.to('.mynav', {
+                y: 0,
+                duration: 1.5,
+                scrollTrigger: '.mynav' 
+            })
+        })
     }
 }
 

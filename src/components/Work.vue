@@ -5,12 +5,12 @@
                 <div class="linework">
                     <p class="work">Work Experiences</p>
                     <hr class="line">
+                    <p class="text2 | text22">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus</p>
                 </div>
-                <p class="text2">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus</p>
+                
                 <ul class="slider | box-container">
-                    <li class="box | flow" style="--flow-spacer: 1em" id="box1">
-
+                    <li class="box | flow | boxtrans | transbox1" style="--flow-spacer: 1em" id="box1">
                         <p>June 2012 - 2016</p>
                         <p class="skills">UI/UX Designer</p>
                         <p>Adobe Inc.</p>
@@ -18,7 +18,7 @@
                             temp
                             incididunt ut labore.</p>
                     </li>
-                    <li class="box | flow" style="--flow-spacer: 1em">
+                    <li class="box | flow | boxtrans | transbox2" style="--flow-spacer: 1em">
 
                         <p>June 2012 - 2016</p>
                         <p class="skills">Product Designer</p>
@@ -27,7 +27,7 @@
                             temp
                             incididunt ut labore.</p>
                     </li>
-                    <li class="box | flow" style="--flow-spacer: 1em">
+                    <li class="box | flow | boxtrans | transbox3" style="--flow-spacer: 1em">
                         <p>June 2012 - 2016</p>
                         <p class="skills">Graphic Designer</p>
                         <p>Adobe Inc.</p>
@@ -44,14 +44,77 @@
 
 <script>
 import A11YSlider from 'a11y-slider';
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: 'Work',
   mounted() {
      new A11YSlider(document.querySelector('.slider'), {
        adaptiveHeight: true,
        dots: true,
      });
+
+    gsap.set('.linework', {opacity: 0, scale: 0.5})
+    gsap.set('.transbox1', {opacity: 0, x: -100})
+    gsap.set('.transbox2', {opacity: 0, y: 600})
+    gsap.set('.transbox3', {opacity: 0, x: 100})
+
+    gsap.to('.linework', {
+        opacity : 1,
+        scale: 1,
+        duration: 1,
+        scrollTrigger: {
+            trigger: '.boxtrans',
+            start: 'center 80%',
+            end: 'center 68%',
+            scrub: true
+        }
+    });
+
+    gsap.to('.transbox1', {
+        opacity : 1,
+        x: 0,
+        duration: 0.5,
+        scrollTrigger: {
+            trigger: '.work',
+            start: 'center 80%',
+            end: 'top 75%',
+            scrub: true,
+        }
+    });
+
+    gsap.to('.transbox2', {
+        opacity : 1,
+        y: 0,
+        duration: 0.5,
+        scrollTrigger: {
+            trigger: '.work',
+            start: 'center 80%',
+            end: 'top 75%',
+            scrub: true,
+        }
+    });
+
+    gsap.to('.transbox3', {
+        opacity : 1,
+        x: 0,
+        duration: 0.5,
+        scrollTrigger: {
+            trigger: '.work',
+            start: 'center 80%',
+            end: 'top 75%',
+            scrub: true,
+        }
+    });
+    
+
+
+
+
+
   },
 };
 </script>
